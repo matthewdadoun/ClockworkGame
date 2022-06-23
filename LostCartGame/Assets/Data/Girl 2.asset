@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2072de563c48f48b471c0a14c2744a, type: 3}
+  m_Name: Girl 2
+  m_EditorClassIdentifier: 
+  name: ANNIE
+  animatorController: {fileID: 22100000, guid: 94286f6d05c0fbe4bbebcb245e04171e, type: 2}
+  type: 0
+  aiType: 0
+  healthBarPrefab: {fileID: 5488366121080005574, guid: d126cb2e4069c494491ceff5dc682df0, type: 3}
+  maxHealth: 10
+  healthBarOffset: {x: 0, y: 0.12, z: 0}
+  baseAttackDamage: 2
