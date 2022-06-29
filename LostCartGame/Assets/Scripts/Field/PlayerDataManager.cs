@@ -8,8 +8,8 @@ public class PlayerDataManager : MonoBehaviour
     Vector2 playerDir;
     public static PlayerDataManager instance;
     public List<Vector3> partyMemPos;
-    public List<Vector2> partyMemDir; 
-    public List <Queue<Vector3>> partyMemQueue = new List<Queue<Vector3>>(); 
+    public List<Vector2> partyMemDir;
+    public List<Queue<Vector3>> partyMemQueue = new List<Queue<Vector3>>();
 
 
     void Awake()
@@ -24,11 +24,10 @@ public class PlayerDataManager : MonoBehaviour
         playerPos = new Vector3(0, 0, -0.01f);
         playerDir = new Vector2(0, -1);
 
-        for(int i = 0; i<3; i++)
+        for (int i = 0; i < 3; i++)
         {
             partyMemQueue.Add(new Queue<Vector3>());
         }
-        
     }
 
     public void StorePlayerPositionAndDirection(Vector3 position, Vector2 direction)

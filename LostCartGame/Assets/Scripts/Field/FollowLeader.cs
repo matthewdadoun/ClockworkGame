@@ -12,12 +12,11 @@ public class FollowLeader : MonoBehaviour
     public Queue<Vector3> record = new Queue<Vector3>();
     private Vector3 lastRecord;
 
-    public Animator partyAnim; 
+    public Animator partyAnim;
 
     private void Start()
     {
         playerMovement = leaderToFollow.GetComponent<PlayerMovement>();
-
     }
     private void FixedUpdate()
     {
@@ -36,10 +35,5 @@ public class FollowLeader : MonoBehaviour
                 this.transform.position = nextPos;
             }
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
- 
     }
 }

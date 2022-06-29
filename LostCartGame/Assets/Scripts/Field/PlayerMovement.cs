@@ -7,15 +7,15 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed;
     public Rigidbody2D playerRB;
     public Vector2 movement;
-    public List<GameObject> party; 
+    public List<GameObject> party;
 
     public Animator playerAnim;
-    public bool canMove; 
+    public bool canMove;
 
     void Start()
     {
         this.transform.position = PlayerDataManager.instance.LoadPlayerPosition();
-        for (int i = 0; i<party.Count; i++)
+        for (int i = 0; i < party.Count; i++)
         {
             party[i].transform.position = PlayerDataManager.instance.LoadPartyPosition(i);
             var partyAnimator = party[i].GetComponent<FollowLeader>().partyAnim;
@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
 
+            // prevents diagonal movement
             if (movement.x != 0)
             {
                 movement.y = 0;
