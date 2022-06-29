@@ -9,7 +9,7 @@ public enum BattleEntityType
 }
 
 public enum BattleAIType
-{ 
+{
     Clock,
     Gear,
     Goblin

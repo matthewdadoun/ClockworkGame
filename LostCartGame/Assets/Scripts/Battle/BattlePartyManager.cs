@@ -91,7 +91,7 @@ public class BattlePartyManager : MonoBehaviour
     public void ShowArrowAt(int i)
     {
         arrow.SetActive(true);
-        if(i >= 0  && i < partyPositions.Length)
+        if (i >= 0 && i < partyPositions.Length)
         {
             arrow.transform.position = partyPositions[i].position - new Vector2(0.2f, 0.0f);
         }
@@ -101,7 +101,7 @@ public class BattlePartyManager : MonoBehaviour
     {
         for (int i = 0; i < partyPositions.Length; i++)
         {
-            if(partyPositions[i].memberAtPos == member)
+            if (partyPositions[i].memberAtPos == member)
             {
                 return i;
             }
@@ -135,10 +135,10 @@ public class BattlePartyManager : MonoBehaviour
         }
 
         float t = 0;
-        while(t < 1)
+        while (t < 1)
         {
             t += Time.deltaTime * turnSpeedModifier;
-            if(t > 1)
+            if (t > 1)
             {
                 t = 1;
             }
@@ -146,7 +146,7 @@ public class BattlePartyManager : MonoBehaviour
             for (int i = 0; i < partyPositions.Length; i++)
             {
                 int nextPos = i + 1;
-                if(nextPos >= partyPositions.Length)
+                if (nextPos >= partyPositions.Length)
                 {
                     nextPos = 0;
                 }
@@ -211,15 +211,15 @@ public class BattlePartyManager : MonoBehaviour
         int initialIndex = Random.Range(0, partyPositions.Length);
         int index = initialIndex;
         BattlePartyMember selectedMember = partyPositions[index].memberAtPos;
-        while(selectedMember == null)
+        while (selectedMember == null)
         {
             index++;
-            if(index >= partyPositions.Length)
+            if (index >= partyPositions.Length)
             {
                 index = 0;
             }
 
-            if(index == initialIndex)
+            if (index == initialIndex)
             {
                 return null;
             }

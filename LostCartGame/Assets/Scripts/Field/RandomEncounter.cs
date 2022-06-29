@@ -41,7 +41,7 @@ public class RandomEncounter : MonoBehaviour
         if (encounterIncreaseDelta <= 0)
         {
             Debug.Log("Invalid increase delta. Setting to 5%");
-            encounterIncreaseDelta = 0.05f; 
+            encounterIncreaseDelta = 0.05f;
         }
         playerMovement = GetComponent<PlayerMovement>();
     }

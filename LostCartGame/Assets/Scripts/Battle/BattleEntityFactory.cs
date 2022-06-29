@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class BattleEntityFactory 
+public static class BattleEntityFactory
 {
     public static BattleEntity CreateBattleEntity(BattleEntityData data)
     {

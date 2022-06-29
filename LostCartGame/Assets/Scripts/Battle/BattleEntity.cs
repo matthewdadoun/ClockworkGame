@@ -29,7 +29,7 @@ public class BattleEntity : MonoBehaviour
     }
     public void SetFacing(Direction direction)
     {
-        if((int)direction >= (int)Direction.COUNT)
+        if ((int)direction >= (int)Direction.COUNT)
         {
             direction = Direction.Up;
         }

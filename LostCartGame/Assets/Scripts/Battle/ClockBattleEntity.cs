@@ -9,7 +9,7 @@ public class ClockBattleEntity : BattleEnemy
     public override IEnumerator RunTurn()
     {
         // Clock AI
-        if(turnsTicking == 2)
+        if (turnsTicking == 2)
         {
             BattleTurnManager.instance.ClearBattleText();
             yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(data.name + " turns!"));

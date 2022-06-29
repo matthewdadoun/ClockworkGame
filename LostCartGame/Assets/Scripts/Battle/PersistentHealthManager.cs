@@ -11,9 +11,9 @@ public class PersistentHealthManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
-            if(instance == this)
+            if (instance == this)
             {
                 // Don't re-initialize manager
                 return;

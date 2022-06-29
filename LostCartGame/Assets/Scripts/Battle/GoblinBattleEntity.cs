@@ -22,7 +22,7 @@ public class GoblinBattleEntity : BattleEnemy
         }
 
         // If we couldn't find a target
-        if(target == null)
+        if (target == null)
         {
             yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(data.name + " refuses to"));
             yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed("fight..."));
@@ -47,7 +47,7 @@ public class GoblinBattleEntity : BattleEnemy
             // Attack!
             yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(data.name + " attacks "));
             yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(facing.ToString() + "!"));
-            AttackReturn retVal =  BattlePartyManager.instance.CommitAttack(facing, data.baseAttackDamage);
+            AttackReturn retVal = BattlePartyManager.instance.CommitAttack(facing, data.baseAttackDamage);
             yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(data.baseAttackDamage + " damage!"));
             string hitIdentifier = "hit";
             if (retVal.isDead)

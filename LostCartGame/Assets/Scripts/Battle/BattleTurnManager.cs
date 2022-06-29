@@ -8,7 +8,7 @@ public class BattleTurnManager : MonoBehaviour
     public static BattleTurnManager instance;
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(this);
         }
@@ -19,7 +19,7 @@ public class BattleTurnManager : MonoBehaviour
     }
 
     public enum BattlePhase
-    { 
+    {
         Party,
         Enemies
     }
@@ -62,7 +62,7 @@ public class BattleTurnManager : MonoBehaviour
         yield return StartCoroutine(WaitForAnyKey());
         ClearBattleText();
 
-        while(!IsBattleOver())
+        while (!IsBattleOver())
         {
             yield return null;
             yield return StartCoroutine(RunCurrentTurn());
@@ -81,9 +81,9 @@ public class BattleTurnManager : MonoBehaviour
     {
         // Condition broken down for clarity sake
         // Check if any key is pressed AND it wasn't the mouse 
-        while(! // Inverse
+        while (! // Inverse
                 (Input.anyKeyDown && // Any key pressed
-                    !(Input.GetMouseButtonDown(0)|| Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)) // Not one of the mouse buttons
+                    !(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)) // Not one of the mouse buttons
                 )
              )
         {
@@ -110,10 +110,10 @@ public class BattleTurnManager : MonoBehaviour
         {
             BattleEnemy enemy = (BattleEnemy)BattleEntityFactory.CreateBattleEntity(potentialEnemies[Random.Range(0, potentialEnemies.Count)]);
             enemies.Add(enemy);
-            enemy.transform.position = spawnPointsPerGroupSize[amount-1].items[i];
+            enemy.transform.position = spawnPointsPerGroupSize[amount - 1].items[i];
             enemy.GetComponent<SpriteRenderer>().sortingOrder = i;
 
-            if(amount == 3 && i == 0)
+            if (amount == 3 && i == 0)
             {
                 enemy.healthBarAnimator.gameObject.transform.localPosition = new Vector3(0.09f, -0.14f, 0);
             }
@@ -124,7 +124,7 @@ public class BattleTurnManager : MonoBehaviour
 
         }
     }
-    
+
     private IEnumerator DisplayIntroText()
     {
         foreach (var enemy in enemies)
@@ -163,13 +163,13 @@ public class BattleTurnManager : MonoBehaviour
                 entity = enemies[battleIndex];
                 break;
         }
-        if(entity == null)
+        if (entity == null)
         {
             yield break;
         }
 
         // Do not run turn for dead character
-        if(entity.IsDead())
+        if (entity.IsDead())
         {
             yield break;
         }
@@ -182,7 +182,7 @@ public class BattleTurnManager : MonoBehaviour
     private void IncrementTurn()
     {
         battleIndex++;
-        int count = 0; 
+        int count = 0;
         switch (phase)
         {
             case BattlePhase.Party:
@@ -198,10 +198,10 @@ public class BattleTurnManager : MonoBehaviour
             battleIndex = 0;
         }
     }
-    
+
     private void SwapPhases()
     {
-        if(phase == BattlePhase.Enemies)
+        if (phase == BattlePhase.Enemies)
         {
             phase = BattlePhase.Party;
         }
@@ -229,12 +229,12 @@ public class BattleTurnManager : MonoBehaviour
 
     public IEnumerator PrintTextDelayed(string text)
     {
-        if(battleTextContent.Count > 3)
+        if (battleTextContent.Count > 3)
         {
             battleTextContent.Dequeue();
         }
         battleText.text = StringArrayToString(battleTextContent.ToArray());
-        
+
         battleTextContent.Enqueue(text);
 
         // Add text to battleText letter by letter
@@ -265,7 +265,7 @@ public class BattleTurnManager : MonoBehaviour
     public void SwapToNextScene()
     {
         string sceneName = "FieldScene";
-        if(IsPartyDefeated())
+        if (IsPartyDefeated())
         {
             sceneName = "GameOverScene";
         }
@@ -278,7 +278,7 @@ public class BattleTurnManager : MonoBehaviour
         bool defeat = true;
         foreach (var member in party)
         {
-            if(member.health > 0)
+            if (member.health > 0)
             {
                 defeat = false;
             }
@@ -305,7 +305,7 @@ public class BattleTurnManager : MonoBehaviour
     {
         for (int i = 0; i < enemies.Count; i++)
         {
-            if(enemies[i] == enemy)
+            if (enemies[i] == enemy)
             {
                 return i;
             }
@@ -322,7 +322,7 @@ public class BattleTurnManager : MonoBehaviour
     public void ShowEnemyArrow(int enemyIndex)
     {
         enemySelectorArrow.SetActive(true);
-        if(enemyIndex >= enemies.Count)
+        if (enemyIndex >= enemies.Count)
         {
             enemyIndex = 0;
         }

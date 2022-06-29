@@ -5,7 +5,7 @@ using UnityEngine;
 public class BattlePartyMember : BattleEntity
 {
     public enum SelectedAction
-    { 
+    {
         Attack,
         Turn,
         Pass,
@@ -87,10 +87,6 @@ public class BattlePartyMember : BattleEntity
 
     }
 
-    public override void EndTurn()
-    {
-    }
-
     public IEnumerator AttackSelectionLoop()
     {
         int selectedEnemy = 0;
@@ -98,7 +94,7 @@ public class BattlePartyMember : BattleEntity
 
         for (int i = 0; i < enemies.Count; i++)
         {
-            if(enemies[i].IsDead())
+            if (enemies[i].IsDead())
             {
                 enemies.RemoveAt(i);
                 i--;
@@ -108,7 +104,7 @@ public class BattlePartyMember : BattleEntity
         List<string> selectorContents = new List<string>();
         for (int i = 0; i < enemies.Count; i++)
         {
-            if(enemies[i].IsDead())
+            if (enemies[i].IsDead())
             {
                 continue;
             }
@@ -126,7 +122,7 @@ public class BattlePartyMember : BattleEntity
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 selectedEnemy++;
-                if(selectedEnemy >= enemies.Count)
+                if (selectedEnemy >= enemies.Count)
                 {
                     selectedEnemy = 0;
                 }
@@ -157,12 +153,12 @@ public class BattlePartyMember : BattleEntity
         yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(data.name + " attacks!"));
         BattleTurnManager.instance.AttackEnemy(realEnemyIndex, data.baseAttackDamage);
         yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(data.baseAttackDamage + " damage!"));
-        string dumdumImtiredstring = "hit";
-        if(enemies[selectedEnemy].IsDead())
+        string deathString = "hit";
+        if (enemies[selectedEnemy].IsDead())
         {
-            dumdumImtiredstring = "defeated";
+            deathString = "defeated";
         }
-        yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(enemies[selectedEnemy].data.name + " is " + dumdumImtiredstring + "!"));
+        yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed(enemies[selectedEnemy].data.name + " is " + deathString + "!"));
         yield return StartCoroutine(BattleTurnManager.instance.PrintTextDelayed("PRESS A..."));
         yield return StartCoroutine(BattleTurnManager.instance.WaitForAnyKey());
 
